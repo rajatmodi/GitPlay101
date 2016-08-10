@@ -5,12 +5,17 @@
 			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 			<script type="text/javascript" src = "directory.js"></script>
 	</head>
-	<body ng-controller="directoryController">
+	<body ng-controller="directoryController as dirList">
 		<input type="text" ng-model="search">
 		<ul>
-			<li ng-repeat = "item in list | filter:search">
+			<li ng-repeat = "item in dirList.list | filter:search">
 				{{item.name}} - {{item.age}}
 			</li>
 		</ul>
+		<form ng-submit="dirList.addPerson()">
+			<input type="text" placeholder="Name" ng-model="dirList.name">
+			<input type="number" placeholder="Age" ng-model="dirList.age">
+			<input type="submit" placeholder="Submit"	>
+		</form>
 	</body>
 </html>
